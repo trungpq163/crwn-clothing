@@ -4,8 +4,8 @@ import MenuItem from '../menu-item/menu-item.component';
 import './directory.styles.scss';
 
 class Directory extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 
 		this.state = {
 			sections: [
@@ -31,7 +31,7 @@ class Directory extends React.Component {
 					title: 'womens',
 					imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
 					size: 'large',
-               id: 4,
+					id: 4,
 					linkUrl: 'shop/womens'
 				},
 				{
@@ -43,20 +43,18 @@ class Directory extends React.Component {
 				}
 			]
 		};
-   }
-   
-   render() {
-      const { sections } = this.state;
-      return (
-         <div className="directory-menu">
-            {
-               sections.map(({ title, id, imageUrl, size }) => (
-                  <MenuItem key={id} title={title} imageUrl={imageUrl} size={size} />
-               ))
-            }
-         </div>
-      );
-   }
+	}
+
+	render() {
+		const { sections } = this.state;
+		return (
+			<div className="directory-menu">
+				{sections.map(({ id, ...ortherSectionProps }) => (
+					<MenuItem key={id}  {...ortherSectionProps} />
+				))}
+			</div>
+		);
+	}
 }
 
 export default Directory;
