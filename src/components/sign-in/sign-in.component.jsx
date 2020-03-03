@@ -3,6 +3,8 @@ import React from 'react';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
+import { signInWithGoogle } from '../../firebase/firebase.utils';
+
 import './sign-in.styles.scss';
 
 class SignIn extends React.Component {
@@ -44,8 +46,6 @@ class SignIn extends React.Component {
                   value={this.state.email} 
                   label='email'
                   required 
-                  // neu co require thi khi nguoi dung ko nhap thong tin thi no se hien len truong
-                  // Please fill out this field.
                />
                
                <FormInput 
@@ -58,6 +58,10 @@ class SignIn extends React.Component {
                />
 
                <CustomButton type='submit'> Sign in </CustomButton>
+               <CustomButton onClick={signInWithGoogle}> 
+                  {' '}
+                  Sign In With Google{' '} 
+               </CustomButton>
             </form>
          </div>
       )
